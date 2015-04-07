@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 
-#if defined WINDOWS
+#if defined _WINDOWS
 #include <Windows.h>
 #endif
 
@@ -51,9 +51,11 @@ public:
 int main(int argc, char* argv[])
 {
 	CXSpiImpl* p = new CXSpiImpl();
-#if defined WINDOWS
-	char DLLPath1[250] = "C:\\Program Files\\SmartQuant Ltd\\OpenQuant 2014\\XAPI\\CTP\\x86\\QuantBox_CTP_Quote.dll";
-	char DLLPath2[250] = "C:\\Program Files\\SmartQuant Ltd\\OpenQuant 2014\\XAPI\\CTP\\x86\\QuantBox_CTP_Trade.dll";
+#if defined _WINDOWS
+	//char DLLPath1[250] = "C:\\Program Files\\SmartQuant Ltd\\OpenQuant 2014\\XAPI\\CTP\\x86\\QuantBox_CTP_Quote.dll";
+	//char DLLPath2[250] = "C:\\Program Files\\SmartQuant Ltd\\OpenQuant 2014\\XAPI\\CTP\\x86\\QuantBox_CTP_Trade.dll";
+	char DLLPath1[250] = ".\\QuantBox_Kingstar_Quote.dll";
+	char DLLPath2[250] = ".\\QuantBox_Kingstar_Trade.dll";
 #else
     char DLLPath1[250] = "libQuantBox_CTP_Quote.so";
 	char DLLPath2[250] = "libQuantBox_CTP_Trade.so";
@@ -93,7 +95,7 @@ int main(int argc, char* argv[])
 		pApi1->RegisterSpi(p);
 		pApi2->RegisterSpi(p);
 
-#if defined WINDOWS
+#if defined _WINDOWS
         pApi1->Connect("D:\\", &m_ServerInfo1, &m_UserInfo, 1);
 		pApi2->Connect("D:\\", &m_ServerInfo2, &m_UserInfo, 1);
 #else

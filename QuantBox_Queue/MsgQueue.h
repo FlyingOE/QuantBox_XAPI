@@ -40,7 +40,7 @@ public:
 	void StopThread();
 
 	//将外部的函数地址注册到队列
-	void Register(void* pCallback,void* pClass)
+	void Register(void* pCallback,void* pClass = NULL)
 	{
 		m_fnOnRespone = (fnOnRespone)pCallback;
 		// 目前没啥用，只是为了与行情和交易的接口统一
